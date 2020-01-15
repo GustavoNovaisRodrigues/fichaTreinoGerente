@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title size="small">public / inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+  <div class="wrapper">
+    <h1 class="titulo">Seja bem vindo</h1>
+  </div>
+
+  <div class="content">
+    <ion-button *ngFor="let item of links; let i=index" expand="block" class=" btn-base" routerLink="{{ item.url }}">
+      {{ item.title }}
+    </ion-button>
+  </div>
+
+  <div class="content ion-text-center">
+    <h3 class="titulo">ou Logue-se pelo:</h3>
+    <ion-button>
+      <ion-icon slot="start" name="logo-facebook"></ion-icon>
+      Facebook
+    </ion-button>
+    <ion-button>
+      <ion-icon slot="start" name="logo-google"></ion-icon>
+      Google
+    </ion-button>
+    <ion-button>
+      <ion-icon slot="start" name="logo-Twitter"></ion-icon>
+      Twitter
+    </ion-button>
+  </div>
+</ion-content>

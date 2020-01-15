@@ -75,3 +75,98 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 }
+
+:root {
+  //rots do ionic
+  --ion-font-family: "Montserrat", sans-serif;
+  --ion-background-color: #30363d;
+  --ion-item-border-color: #3c444d;
+  --ion-item-color: #ffffff;
+  --ion-toolbar-color: #ffffff;
+  --ion-text-color: #ffffff;
+}
+
+/* Cores */
+$cor-bg0: #30363d;
+$cor-bg1: #3c444d;
+
+$cor-text-1: #747d88;
+$cor-text0: #cbcfd4;
+$cor-text1: #fff;
+$cor-textLink: #f27a54;
+
+$cor-acept: #6fcf97;
+$cor-invalid: #cf6f8a;
+
+$cor-degrade: #f27a54;
+$cor-degrade2: #a154f2;
+
+/* Fonts */
+$font: "Montserrat", sans-serif;
+
+.wrapper {
+  //   background-color: $cor-escura2; //darken(#f27a54, 5%)
+  width: 100%;
+  min-height: 10%;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  //   align-content: center;
+}
+.titulo {
+  background: linear-gradient(to right, #f27a54 30%, #a154f2 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.btn-base {
+  --background: linear-gradient(to right, #f27a54 30%, #a154f2 100%);
+  --background-hover: linear-gradient(to right, #f27a54 30%, #a154f2 100%);
+  position: relative;
+  cursor: pointer;
+}
+.btn-base:hover::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+  // border-radius: 20px;
+}
+.btn-link {
+  color: $cor-textLink;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.content {
+  width: 80%;
+  //   min-height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 0 auto;
+}
+
+ion-toast {
+  --button-color: $cor-textLink;
+}
+.alert-sub-title {
+  color: $cor-text0 !important;
+}
+.alert-button {
+  color: $cor-textLink !important;
+}
+.loading {
+  --background: #3c444d;
+  color: #f27a54;
+
+  --spinner-color: #f27a54 ;
+  .loading-content {
+    color: $cor-text0;
+    background: linear-gradient(to right, #f27a54 30%, #a154f2 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}

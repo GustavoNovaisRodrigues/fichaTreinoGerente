@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title  size="small">public/ login</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+
+  <div class="wrapper">
+    <h1 class="titulo">Logue-se</h1>
+  </div>
+  <div class="content">
+    <form [formGroup]="loginForm" (ngSubmit)="logar()">
+      <ion-list lines="full" class="ion-no-margin ion-no-padding">
+
+        <ion-item>
+          <ion-label position="stacked">Email <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input required type="text" formControlName="email"></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label position="stacked">Senha <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input required type="text" formControlName="senha"></ion-input>
+        </ion-item>
+
+
+        <div class="ion-padding">
+          <ion-button expand="block" type="submit" class="ion-no-margin btn-base" [disabled]="loginForm.invalid">Logar
+          </ion-button>
+        </div>
+      </ion-list>
+    </form>
+  </div>
+
+  <div class="content ion-text-center">
+    <a class="btn-link" routerLink="/esqueci-senha">Esqueci minha senha</a>
+  </div>
+</ion-content>
