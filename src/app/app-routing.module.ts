@@ -20,8 +20,8 @@ const routes: Routes = [
     loadChildren: () => import('./public/esqueci-senha/esqueci-senha.module').then(m => m.EsqueciSenhaPageModule)
   },
   {
-    path: 'perfil',
-    loadChildren: () => import('./private/perfil/perfil.module').then( m => m.PerfilPageModule)
+    path: 'gerente',
+    loadChildren: () => import('./private/private.module').then( m => m.PrivatePageModule)
   }
 ];
 

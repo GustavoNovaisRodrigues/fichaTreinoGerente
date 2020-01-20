@@ -1,0 +1,32 @@
+:root {
+  //rots do ionic
+  --ion-font-family: "Montserrat", sans-serif;
+  --ion-background-color: #30363d;
+  --ion-item-border-color: #3c444d;
+  --ion-item-color: #ffffff;
+  --ion-toolbar-color: #ffffff;
+  --ion-text-color: #ffffff;
+}
+
+/* Cores */
+$cor-bg0: #30363d;
+$cor-bg1: #3c444d;
+
+$cor-text-1: #747d88;
+$cor-text0: #cbcfd4;
+$cor-text1: #fff;
+$cor-textLink: #f27a54;
+
+$cor-acept: #6fcf97;
+$cor-invalid: #cf6f8a;
+
+$cor-degrade: #f27a54;
+$cor-degrade2: #a154f2;
+
+$bg-gradient: linear-gradient(to right, $cor-degrade 30%, $cor-degrade2 100%);
+
+/* Fonts */
+$font: "Montserrat", sans-serif;
+$font-size-1: 12px;
+$font-size0: 16px;
+$font-size1: 18px;

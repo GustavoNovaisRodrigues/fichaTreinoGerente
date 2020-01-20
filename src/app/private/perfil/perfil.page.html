@@ -1,5 +1,9 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="menu-gerente"></ion-menu-button>
+    </ion-buttons>
+
     <ion-title size="small">private/ perfil</ion-title>
     <ion-buttons slot="secondary">
       <ion-button (click)="deslogar()">
@@ -10,6 +14,62 @@
 </ion-header>
 
 <ion-content>
+
+  <ng-container *ngIf="dataUsuario; else elseTemplate">
+    <ion-card class="ion-card">
+
+      <div class="options">
+        <ion-button fill="clear" color="light" (click)="presentPopover($event)">
+          <ion-icon slot="icon-only" name="more"></ion-icon>
+        </ion-button>
+      </div>
+
+      <ion-card-header class="ion-card-header">
+        <ion-card-subtitle>Gerente</ion-card-subtitle>
+        <div class="imgPerfil">
+          <div class="round">
+            <img src="https://picsum.photos/200/200" />
+          </div>
+        </div>
+        <ion-card-title>Gustavo Novais Rodrigues</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <h1 class="title">Dados</h1>
+        <div class="redesSociais">
+          <span>Gênero:</span><span>Masculino</span>
+        </div>
+        <div class="redesSociais">
+          <span>E-mail:</span><span>gerente@email.com</span>
+        </div>
+        <div class="redesSociais">
+          <span>Nivel:</span><span>gerente</span>
+        </div>
+
+      </ion-card-content>
+
+      <ion-card-content>
+        <h1 class="title">Redes Sociais</h1>
+        <div class="redesSociais" *ngFor="let item of ['Instagram','Facebook','Twitter']; let i=index">
+          <a class="btn-link">{{item}}</a>
+          <span>@gusavo.n.rodrigues</span>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+  </ng-container>
+
+  <ng-template #elseTemplate>
+
+    <ion-slides mode="ios" pager="ios" scrollbar="ios">
+      <ion-slide class="no-data" *ngFor="let item of [0,0,0,0,0,0,0]; let i=index">
+        <h1 class="titulo">{{i}}-Desculpe, não há usuario logado</h1>
+      </ion-slide>
+    </ion-slides>
+
+  </ng-template>
+
+
 
 
 </ion-content>

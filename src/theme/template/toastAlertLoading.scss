@@ -1,0 +1,22 @@
+
+ion-toast {
+    --button-color: $cor-textLink;
+  }
+  .alert-sub-title {
+    color: $cor-text0 !important;
+  }
+  .alert-button {
+    color: $cor-textLink !important;
+  }
+  .loading {
+    --background: #3c444d;
+    color: #f27a54;
+  
+    --spinner-color: #f27a54 ;
+    .loading-content {
+      color: $cor-text0;
+      background: linear-gradient(to right, #f27a54 30%, #a154f2 100%);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }

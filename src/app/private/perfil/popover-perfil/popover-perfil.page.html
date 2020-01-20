@@ -1,0 +1,29 @@
+<ion-list>
+  <ion-list-header class="ion-list-header">Opções</ion-list-header>
+
+  <ion-item button class="ion-item" (click)="presentModal()">
+    Enviar nova foto
+    <ion-icon slot="end" name="ios-arrow-forward" class="icon-arrow "></ion-icon>
+  </ion-item>
+
+  <ion-item button class="ion-item">
+    Editar dados
+    <ion-icon slot="end" name="ios-arrow-forward" class="icon-arrow "></ion-icon>
+  </ion-item>
+
+  <ion-item button class="ion-item">
+    Editar E-mail
+    <ion-icon slot="end" name="ios-arrow-forward" class="icon-arrow "></ion-icon>
+  </ion-item>
+
+  <ion-item button class="ion-item">
+    Editar Senha
+    <ion-icon slot="end" name="ios-arrow-forward" class="icon-arrow "></ion-icon>
+  </ion-item>
+
+  <ion-item button class="ion-item">
+    Reenviar e-mail de autenticação
+    <ion-icon slot="end" name="ios-arrow-forward" class="icon-arrow "></ion-icon>
+  </ion-item>
+</ion-list>
+<ion-button expand="full" fill="clear" (click)="dismissPopover()" color="danger">Fechar</ion-button>

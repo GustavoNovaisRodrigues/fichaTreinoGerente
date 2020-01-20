@@ -69,7 +69,7 @@ export class LoginPage implements OnInit {
 
 
   private _redirecionarUsuarioLogado() {
-    this.router.navigate(['/perfil'])
+    this.router.navigate(['/gerente/perfil'])
   }
 
 }

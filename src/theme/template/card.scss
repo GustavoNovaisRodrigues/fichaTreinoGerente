@@ -1,0 +1,56 @@
+.ion-card {
+  background: $cor-bg1; // !important;
+  > .options {
+      display: flex;
+      flex-direction: row-reverse;
+  }
+}
+.ion-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $cor-text0;
+  > .imgPerfil {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    padding: 5px;
+    background: $bg-gradient;
+    overflow: hidden;
+    margin-top: 8px;
+    > .round {
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+}
+ion-card-subtitle {
+  color: $cor-textLink;
+}
+ion-card-title {
+  color: $cor-text1;
+}
+ion-card-content {
+  display: flex;
+  flex-direction: column;
+  //   align-items: center;
+  color: $cor-text0;
+  > .title {
+    font-size: $font-size1;
+    background: $bg-gradient;
+    color: $cor-text1;
+    padding: 5px;
+    margin: 5px 0;
+  }
+  > .redesSociais {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: $cor-bg0;
+    padding: 5px;
+    margin: 5px 0;
+    span {
+      font-size: $font-size-1;
+    }
+  }
+}

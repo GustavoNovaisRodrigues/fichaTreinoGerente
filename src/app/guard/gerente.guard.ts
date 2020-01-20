@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, CanLoad, Route, UrlSegment, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -6,6 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GerenteGuard implements CanActivate, CanActivateChild, CanLoad {
+  constructor(private auth: AuthService) {
+
+  }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

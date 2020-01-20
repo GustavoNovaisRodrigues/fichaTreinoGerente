@@ -1,0 +1,27 @@
+<ion-split-pane contentId="menu-gerente" when="xs" [disabled]="true">
+  <ion-menu contentId="menu-gerente" menuId="menu-gerente" side="start" type="overlay">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title color="light">Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle auto-hide="false" *ngFor="let item of pages">
+
+          <ion-item [routerLink]='item.url'>
+            {{item.title}}
+          </ion-item>
+        </ion-menu-toggle>      
+        <ion-menu-toggle>
+          <ion-item (click)="deslogar()"> <!-- TODO arrumar essa bagunça de  style="color:white" -->
+            <ion-icon name="log-out" slot="end" style="color:white"></ion-icon>
+            sair
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="menu-gerente"></ion-router-outlet>
+</ion-split-pane>
