@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title size="small">Modal/ Imgae Crop</ion-title>
+    <ion-title size="small">Modal/ Image Crop</ion-title>
     <ion-buttons slot="secondary">
       <ion-button (click)="fechar()">
         <ion-icon slot="icon-only" name="close"></ion-icon>
@@ -11,53 +11,67 @@
 
 <ion-content fullscreen>
   <div class="top-wrapper">
-    <ion-button class="btn-base btn-modal" shape="round">
-      <ion-icon slot="start" class="icon" name="cloud-upload"></ion-icon>
-      Carrega foto
-    </ion-button>
+    <label for="fileInput">
+      <ion-button class="btn-base btn-modal" shape="round">
+        <ion-icon slot="start" class="icon" name="cloud-upload"></ion-icon>
+        Carrega foto
+      </ion-button>
+    </label>
+    <a class="btnResetar" (click)="resetar()">
+      <!-- <ion-icon slot="icon-only" name="close"></ion-icon> -->
+      Resetar Edições
+    </a>
+    <input type="file" (change)="carregarFoto($event)" id='fileInput' accept="images/*" style="display: none;">
   </div>
 
   <div class="stage-wrapper">
-    <img class="imgStage">
+    <img #image [src]="imagemParaEditar" crossorigin class="imgStage">
   </div>
 
-
   <!-- Girar Tab -->
-  <div class="controller-wrapper" *ngIf="testIf == 0">
+  <div class="controller-wrapper" *ngIf="indexBotaoPressionado == 0">
     <div class="buttons">
-      <button class="btn">
+      <button class="btn" (click)="girarEsquerda()">
         <ion-icon name="undo" class="icon"></ion-icon>Girar esquerda
       </button>
-      <button class="btn">
+      <button class="btn" (click)="girarDireita()">
         <ion-icon name="redo" class="icon"></ion-icon>Girar direita
       </button>
     </div>
+    <!-- Girar Tab -->
   </div>
 
   <!-- Dieção Tab -->
-  <div class="controller-wrapper" *ngIf="testIf == 1">
+  <div class="controller-wrapper" *ngIf="indexBotaoPressionado == 1">
     <div class="buttons">
-      <button class="btn-seta">
+      <button class="btnFull" (click)="centralizar()">
+        <ion-icon name="contract" class="icon"></ion-icon>Contralizar
+      </button>
+    </div>
+
+    <div class="buttons">
+      <button class="btn-seta" (click)="move(-10,0)">
         <ion-icon name="arrow-back" class="icon"></ion-icon>
       </button>
 
       <div class="coluna">
-        <button class="btn-seta">
+        <button class="btn-seta" (click)="move(0,-10)">
           <ion-icon name="arrow-up" class="icon"></ion-icon>
         </button>
-        <button class="btn-seta">
+        <button class="btn-seta" (click)="move(0,10)">
           <ion-icon name="arrow-down" class="icon"></ion-icon>
         </button>
       </div>
 
-      <button class="btn-seta">
+      <button class="btn-seta" (click)="move(10,0)">
         <ion-icon name="arrow-forward" class="icon"></ion-icon>
       </button>
     </div>
+    <!-- Dieção Tab -->
   </div>
 
-
-  <div class="controller-wrapper" *ngIf="testIf == 2">
+  <!-- Zoom tab -->
+  <div class="controller-wrapper" *ngIf="indexBotaoPressionado == 2">
     <div class="buttons">
       <ion-range min="-200" max="200" step="20" [(ngModel)]="valorRange" snaps="true" pin="true"
         (ionChange)="zoomRange($event)">
@@ -67,66 +81,66 @@
     </div>
 
     <div class="buttons">
-      <button class="btn">
+      <button class="btn" (click)="zoomOut()">
         <ion-icon name="remove" class="icon"></ion-icon>Zoom Out
       </button>
-      <button class="btn">
+
+      <button class="btn" (click)="zoomIn()">
         <ion-icon name="add" class="icon"></ion-icon>Zoom In
       </button>
     </div>
+    <!-- Zoom tab -->
   </div>
 
 
-
-  <div class="controller-wrapper" *ngIf="testIf == 3">
+  <!-- Virar Tab-->
+  <div class="controller-wrapper" *ngIf="indexBotaoPressionado == 3">
     <div class="buttons">
-      <button class="btn">
+      <button class="btn" (click)="virarHorizontal()">
         <div>
           <ion-icon name="arrow-up" class="icon"></ion-icon>
           <ion-icon name="arrow-down" class="icon"></ion-icon>
         </div>
-        <!-- Rotacionar direita -->
         Virar Horizontal
       </button>
-      <button class="btn">
+      <button class="btn" (click)="virarVertical()">
         <div>
           <ion-icon name="arrow-back" class="icon"></ion-icon>
           <ion-icon name="arrow-forward" class="icon"></ion-icon>
         </div>
-        <!-- Rotacionar esquerda -->
         Virar vertical
       </button>
     </div>
+    <!-- Virar Tab-->
   </div>
 
+
+  <!-- Modal Preview -->
   <div class="modal-preview" #modal>
     <div class="backdrop"></div>
 
     <div class="preview">
-
       <div class="toolbar">
         <span class="title">Prévia da imagem</span>
       </div>
 
-      <img src="../../../assets/img/picture.jpg" alt="">
+      <img [src]="imagemCortada" alt="">
+      <!-- <img src="../../../assets/img/picture.jpg" alt=""> -->
 
       <div class="buttons">
-        <a class="btn-clear" (click)="cancelar()">Cancelar</a>
+        <a class="btn-clear" (click)="cancelarModalPreview()">Cancelar</a>
         <a class="btn-clear" (click)="enviar()">Enviar</a>
       </div>
     </div>
-
+    <!-- Modal Preview -->
   </div>
-
-
-
 
 </ion-content>
 
 <ion-footer>
   <div class="tabs-wrapper">
-    <button class="tabButton" [ngClass]="{'_checked': item.checked}" *ngFor="let item of segments; let i=index"
-      (click)="onClick(i)">
+    <button class="tabButton" [ngClass]="{'_checked': item.checked}" *ngFor="let item of botoesDeEdicao; let i=index"
+      (click)="selectTabButtons(i)">
       <ion-icon name="{{item.icon}}"></ion-icon>
       <ion-label>{{item.title}}</ion-label>
     </button>

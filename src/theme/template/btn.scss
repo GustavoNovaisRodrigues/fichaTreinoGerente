@@ -1,21 +1,29 @@
 .btn-base {
-    --background: linear-gradient(to right, #f27a54 30%, #a154f2 100%);
-    --background-hover: linear-gradient(to right, #f27a54 30%, #a154f2 100%);
-    position: relative;
-    cursor: pointer;
-  }
-  .btn-base:hover::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    background: rgba(255, 255, 255, 0.1);
-    z-index: 1;
-    // border-radius: 20px;
-  }
-  .btn-link {
-    color: $cor-textLink;
-    text-decoration: underline;
-    cursor: pointer;
-  }
+  --background: linear-gradient(to right, #f27a54 30%, #a154f2 100%);
+  --background-hover: linear-gradient(to right, #f27a54 30%, #a154f2 100%);
+  position: relative;
+  cursor: pointer;
+}
+.btn-base:hover::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+  // border-radius: 20px;
+}
+.btn-link {
+  color: $cor-textLink;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.btn-clear {
+  background: linear-gradient(to right, #f27a54 30%, #a154f2 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 18px;
+  padding:0px 10px ;
+  cursor: pointer;
+}
