@@ -9,9 +9,126 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
+  <div class="top-wrapper">
+    <ion-button class="btn-base btn-modal" shape="round">
+      <ion-icon slot="start" class="icon" name="cloud-upload"></ion-icon>
+      Carrega foto
+    </ion-button>
+  </div>
+
+  <div class="stage-wrapper">
+    <img class="imgStage">
+  </div>
+
+
+  <!-- Girar Tab -->
+  <div class="controller-wrapper" *ngIf="testIf == 0">
+    <div class="buttons">
+      <button class="btn">
+        <ion-icon name="undo" class="icon"></ion-icon>Girar esquerda
+      </button>
+      <button class="btn">
+        <ion-icon name="redo" class="icon"></ion-icon>Girar direita
+      </button>
+    </div>
+  </div>
+
+  <!-- Dieção Tab -->
+  <div class="controller-wrapper" *ngIf="testIf == 1">
+    <div class="buttons">
+      <button class="btn-seta">
+        <ion-icon name="arrow-back" class="icon"></ion-icon>
+      </button>
+
+      <div class="coluna">
+        <button class="btn-seta">
+          <ion-icon name="arrow-up" class="icon"></ion-icon>
+        </button>
+        <button class="btn-seta">
+          <ion-icon name="arrow-down" class="icon"></ion-icon>
+        </button>
+      </div>
+
+      <button class="btn-seta">
+        <ion-icon name="arrow-forward" class="icon"></ion-icon>
+      </button>
+    </div>
+  </div>
+
+
+  <div class="controller-wrapper" *ngIf="testIf == 2">
+    <div class="buttons">
+      <ion-range min="-200" max="200" step="20" [(ngModel)]="valorRange" snaps="true" pin="true"
+        (ionChange)="zoomRange($event)">
+        <ion-label size="small" slot="start">min</ion-label>
+        <ion-label size="small" slot="end">max</ion-label>
+      </ion-range>
+    </div>
+
+    <div class="buttons">
+      <button class="btn">
+        <ion-icon name="remove" class="icon"></ion-icon>Zoom Out
+      </button>
+      <button class="btn">
+        <ion-icon name="add" class="icon"></ion-icon>Zoom In
+      </button>
+    </div>
+  </div>
 
 
 
-  
+  <div class="controller-wrapper" *ngIf="testIf == 3">
+    <div class="buttons">
+      <button class="btn">
+        <div>
+          <ion-icon name="arrow-up" class="icon"></ion-icon>
+          <ion-icon name="arrow-down" class="icon"></ion-icon>
+        </div>
+        <!-- Rotacionar direita -->
+        Virar Horizontal
+      </button>
+      <button class="btn">
+        <div>
+          <ion-icon name="arrow-back" class="icon"></ion-icon>
+          <ion-icon name="arrow-forward" class="icon"></ion-icon>
+        </div>
+        <!-- Rotacionar esquerda -->
+        Virar vertical
+      </button>
+    </div>
+  </div>
+
+  <div class="modal-preview" #modal>
+    <div class="backdrop"></div>
+
+    <div class="preview">
+
+      <div class="toolbar">
+        <span class="title">Prévia da imagem</span>
+      </div>
+
+      <img src="../../../assets/img/picture.jpg" alt="">
+
+      <div class="buttons">
+        <a class="btn-clear" (click)="cancelar()">Cancelar</a>
+        <a class="btn-clear" (click)="enviar()">Enviar</a>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
 </ion-content>
+
+<ion-footer>
+  <div class="tabs-wrapper">
+    <button class="tabButton" [ngClass]="{'_checked': item.checked}" *ngFor="let item of segments; let i=index"
+      (click)="onClick(i)">
+      <ion-icon name="{{item.icon}}"></ion-icon>
+      <ion-label>{{item.title}}</ion-label>
+    </button>
+  </div>
+</ion-footer>
